@@ -55,6 +55,10 @@ function hasTargetWord(word, node) {
 
 function addColor(word, node) {
   const offset = node.wholeText.indexOf(word);
+  if (offset < 0) {
+    return;
+  }
+
   console.log(node);
   console.log("search: "+word);
   console.log("text: "+node.wholeText);
@@ -71,11 +75,12 @@ function addColor(word, node) {
 
   const parent = node.parentNode;
   parent.insertBefore(insertObj, after_node);
+
+  addColor(word, after_node);
 }
 
 function insertSearchBox() {
   let body = document.getElementsByTagName('body');
-  //body[0].appendChild(searchBox());
   body[0].insertBefore(searchBox(), body[0].firstChild);
 
   body[0].addEventListener('input', updateSearchWord);
