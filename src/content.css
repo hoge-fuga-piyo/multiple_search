@@ -1,0 +1,5 @@
+.multipleSearchBox {
+  position:fixed;
+  width: 10%;
+  z-index: 99999;
+}
